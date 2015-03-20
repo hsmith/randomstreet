@@ -60,7 +60,6 @@ Building.prototype.generate = function( startingSide ) {
 					for( var roomx = startPos.x; roomx < startPos.x + roomDef.size.x; ++roomx ) {
 						var placePos = new PIXI.Point( roomx, roomy );
 						this.tryPlaceRandomRoom( placePos );
-						//this.tryPlaceRoom( Killers.Rooms.definitions[0], placePos );
 					}
 				}
 			}
@@ -86,19 +85,6 @@ Building.prototype.addSpritesForRoom = function( room ) {
 
 Building.prototype.tryPlaceRandomRoom = function( pos ) {
 	var availRooms = Killers.Rooms.getRandomizedDefinitions();
-	for( var i = 0; i < availRooms.length; i++ ) {
-		var tryRoom = availRooms[i];
-		if( this.tryPlaceRoom( tryRoom, pos ) ) {
-			return tryRoom;
-		}
-	}
-
-	return null;
-}
-
-///###hsmith $NOTE this is a hack to prevent needing to traverse the house
-Building.prototype.tryPlaceRandomSingleStoryRoom = function( pos ) {
-	var availRooms = Killers.Rooms.getRandomizedSingleStoryDefinitions();
 	for( var i = 0; i < availRooms.length; i++ ) {
 		var tryRoom = availRooms[i];
 		if( this.tryPlaceRoom( tryRoom, pos ) ) {
